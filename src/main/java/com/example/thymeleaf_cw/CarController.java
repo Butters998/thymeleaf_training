@@ -60,8 +60,13 @@ public class CarController {
     public String changeCar(@ModelAttribute Car car) {
         Optional<Car> findId = cars.stream().filter(e -> e.getId() == car.getId()).findFirst();
         if (findId.isPresent()) {
-            cars.remove(findId.get());
-            cars.add(car);
+            if (car.getMark() != null) {
+                findId.get().setMark(car.getMark());
+            }
+            if (car.getModel() != null) {
+                findId.get().setModel(car.getModel());
+            }
+
             return "redirect:/car";
         }
         else
