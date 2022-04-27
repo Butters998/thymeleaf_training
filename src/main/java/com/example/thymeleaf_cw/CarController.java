@@ -14,10 +14,10 @@ public class CarController {
     private final List<Car> cars;
 
     public CarController() {
-        Car car1 = new Car(1,"BMW", "i8");
-        Car car2 = new Car(2,"Fiat", "126p");
-        Car car3 = new Car(3,"Polonez", "Caro");
-        Car car4 = new Car(4,"Hyundai", "i30");
+        Car car1 = new Car(1L,"BMW", "i8");
+        Car car2 = new Car(2L,"Fiat", "126p");
+        Car car3 = new Car(3L,"Polonez", "Caro");
+        Car car4 = new Car(4L,"Hyundai", "i30");
         cars = new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
