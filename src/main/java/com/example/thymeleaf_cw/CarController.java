@@ -5,18 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class CarController {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public CarController() {
-        Car car1 = new Car("BMW","i8");
-        Car car2 = new Car("Fiat","126p");
-        Car car3 = new Car("Polonez","Caro");
+        Car car1 = new Car("BMW", "i8");
+        Car car2 = new Car("Fiat", "126p");
+        Car car3 = new Car("Polonez", "Caro");
         Car car4 = new Car("Hyundai", "i30");
         cars = new ArrayList<>();
         cars.add(car1);
@@ -33,9 +34,10 @@ public class CarController {
         return "car";
     }
 
-    @PostMapping("/add-car")
-    public String addCar(@ModelAttribute Car car) {
-        cars.add(car);
-        return "redirect:/car";
+    @GetMapping("/add-car")
+    public String addCar(@RequestParam String mark, @RequestParam String model) {
+        cars.add(new Car(mark, model));
+        //return "redirect:/car";
+        return "car"; // tutaj żeby już nas nie przenosiło ale będzie sypało błędem
     }
 }
